@@ -34,7 +34,7 @@ const VideoUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/predict/",
+        `${import.meta.env.VITE_BACKEND_URL_FIRSTENDPOINT}`,
         formData,
         {
           headers: {
