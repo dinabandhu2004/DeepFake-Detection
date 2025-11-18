@@ -1,0 +1,123 @@
+/* Overall layout */
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Georgia", serif;
+}
+
+/* HEADER / TITLE */
+.header {
+  width: 100%;
+  background-color: #6a63e6;
+  padding: 25px 0;
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+/* BIG TOP CONTAINER (VIDEO + UPLOAD SIDE BY SIDE) */
+.video-upload-wrapper {
+  width: 90%;
+  max-width: 1100px;
+  background: #7f7f87;
+  padding: 40px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* LEFT: Video Player Box */
+.video-box {
+  width: 48%;
+  height: 350px;
+  background: #bdbdbd;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+}
+
+.video-box video {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+/* RIGHT: Upload Box */
+.upload-box {
+  width: 48%;
+  height: 350px;
+  background: #d3d3d3;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: #444;
+  font-size: 18px;
+  text-align: center;
+}
+
+.upload-box input[type="file"] {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Upload Button */
+.upload-btn {
+  margin-top: 25px;
+  align-self: center;
+  background: #6b63e6;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 25px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.upload-btn:hover {
+  background: #5148dd;
+}
+
+/* BOTTOM RESULT SECTION */
+.result-container {
+  width: 90%;
+  max-width: 1100px;
+  background: #7f7f87;
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.result-container p {
+  margin: 10px 0;
+}
+
+.result-real {
+  color: green;
+  font-weight: bold;
+}
+
+.result-fake {
+  color: red;
+  font-weight: bold;
+}

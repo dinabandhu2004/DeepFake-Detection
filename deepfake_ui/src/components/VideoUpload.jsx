@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
+import './videoupload.css'
 
 const VideoUpload = () => {
   const [videoFile, setVideoFile] = useState(null);
@@ -72,63 +73,38 @@ const VideoUpload = () => {
   }, [videoUrl]);
 
   return (
-    <div style={{ maxWidth: "600px", margin: "50px auto", textAlign: "center" }}>
-      <h2>Deepfake Detection</h2>
+    < div className="main">
+      <h2 className="header">Deepfake Detection</h2>
       
-      {/* Video Player */}
-      {videoUrl && (
-        <div style={{ marginBottom: "20px" }}>
-          <video
-            ref={videoRef}
-            src={videoUrl}
-            controls
-            autoPlay
-            muted
-            style={{
-              maxWidth: "100%",
-              maxHeight: "300px",
-              border: "1px solid #ddd",
-              borderRadius: "8px"
-            }}
-            onPlay={() => console.log("Video started playing")}
-          >
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      )}
-      
-      <input 
-        type="file" 
-        accept="video/*" 
-        onChange={handleFileChange} 
-        style={{ marginBottom: "10px" }}
+<div className="video-upload-wrapper">
+
+  <div className="video-box">
+    {videoUrl ? (
+      <video
+        ref={videoRef}
+        src={videoUrl}
+        controls
+        autoPlay
+        muted
       />
-      <br />
-      <button
-        onClick={handleUpload}
-        style={{ 
-          marginTop: "10px", 
-          padding: "10px 20px",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer"
-        }}
-        disabled={loading}
-      >
-        {loading ? "Processing..." : "Upload & Detect"}
-      </button>
+    ) : (
+      "video will be played here"
+    )}
+  </div>
+
+  <div className="upload-box">
+    <p>upload video here</p>
+    <input type="file" accept="video/*" onChange={handleFileChange} />
+    <button className="upload-btn" onClick={handleUpload}>
+      {loading ? "Processing..." : "Upload & Predict"}
+    </button>
+  </div>
+
+</div>
+
 
       {result && (
-        <div style={{ 
-          marginTop: "20px", 
-          textAlign: "left",
-          padding: "15px",
-          backgroundColor: "#f8f9fa",
-          borderRadius: "8px",
-          border: "1px solid #dee2e6"
-        }}>
+        <div className="result-container">
           {result.status === "success" ? (
             <>
               <p><strong>Filename:</strong> {result.filename}</p>
@@ -137,10 +113,13 @@ const VideoUpload = () => {
               <p><strong>Fake Accuracy:</strong> {result.fake_accuracy}</p>
             </>
           ) : (
-            <p style={{ color: "red" }}>{result.message}</p>
+            <p>{result.message}</p>
           )}
         </div>
       )}
+
+    
+
     </div>
   );
 };
