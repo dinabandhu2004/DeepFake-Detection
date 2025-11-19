@@ -6,6 +6,9 @@ SECRET_KEY = 'django-insecure-+49$%9(l5eg5_c0w27c#a+k!te$hrp+y(v4de!b9nborw630if
 DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
+# --------------------
+# Installed apps
+# --------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -18,10 +21,13 @@ INSTALLED_APPS = [
     'api',
 ]
 
+# --------------------
+# Middleware (CORS must be first)
+# --------------------
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",      
-    "django.middleware.common.CommonMiddleware",  
-
+    "deepfake_server.middleware.ForceCorsMiddleware",  # custom middleware to force CORS
+    "corsheaders.middleware.CorsMiddleware",           # corsheaders
+    "django.middleware.common.CommonMiddleware",      # must come after CORS
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -31,10 +37,9 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
-
-
-
+# --------------------
+# CORS Settings
+# --------------------
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
@@ -43,13 +48,13 @@ CSRF_TRUSTED_ORIGINS = [
     "https://deep-fake-detection-peach.vercel.app",
     "http://localhost:5173"
 ]
+CSRF_COOKIE_SECURE = False  # local testing
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-
-
-
-
+# --------------------
+# URLs & Templates
+# --------------------
 ROOT_URLCONF = 'deepfake_server.urls'
 
 TEMPLATES = [
@@ -69,6 +74,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'deepfake_server.wsgi.application'
 
+# --------------------
+# Database
+# --------------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -76,13 +84,19 @@ DATABASES = {
     }
 }
 
+# --------------------
+# Localization
+# --------------------
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# --------------------
+# Static Files
+# --------------------
 STATIC_URL = 'static/'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
