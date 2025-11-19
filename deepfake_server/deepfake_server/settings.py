@@ -32,11 +32,24 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
+    "https://deep-fake-detection-peach.vercel.app",
     "http://localhost:5173",
-    "https://deep-fake-detection-peach.vercel.app/"
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "origin",
+    "user-agent",
+    "dnt",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+
+# CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'deepfake_server.urls'
 
