@@ -3,7 +3,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-+49$%9(l5eg5_c0w27c#a+k!te$hrp+y(v4de!b9nborw630if'
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
@@ -36,6 +36,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+
 CORS_ALLOW_HEADERS = [
     "accept",
     "accept-encoding",
@@ -49,7 +52,7 @@ CORS_ALLOW_HEADERS = [
 ]
 
 
-# CORS_ALLOW_ALL_ORIGINS = True
+
 
 ROOT_URLCONF = 'deepfake_server.urls'
 
