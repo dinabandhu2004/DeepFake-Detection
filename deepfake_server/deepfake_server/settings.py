@@ -25,9 +25,8 @@ INSTALLED_APPS = [
 # Middleware (CORS must be first)
 # --------------------
 MIDDLEWARE = [
-    "deepfake_server.middleware.ForceCorsMiddleware",  # custom middleware to force CORS
-    "corsheaders.middleware.CorsMiddleware",           # corsheaders
-    "django.middleware.common.CommonMiddleware",      # must come after CORS
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
