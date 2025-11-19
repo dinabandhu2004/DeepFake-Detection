@@ -14,7 +14,7 @@ const VideoUpload = () => {
     if (file) {
       setVideoFile(file);
       setResult(null);
-      
+
       // Create URL for the selected video file
       const url = URL.createObjectURL(file);
       setVideoUrl(url);
@@ -75,50 +75,51 @@ const VideoUpload = () => {
   return (
     < div className="main">
       <h2 className="header">Deepfake Detection</h2>
-      
-<div className="video-upload-wrapper">
 
-  <div className="video-box">
-    {videoUrl ? (
-      <video
-        ref={videoRef}
-        src={videoUrl}
-        controls
-        autoPlay
-        muted
-      />
-    ) : (
-      "video will be played here"
-    )}
-  </div>
+      <div className="video-upload-wrapper">
 
-  <div className="upload-box">
-    <p>upload video here</p>
-    <input type="file" accept="video/*" onChange={handleFileChange} />
-    <button className="upload-btn" onClick={handleUpload}>
-      {loading ? "Processing..." : "Upload & Predict"}
-    </button>
-  </div>
-
-</div>
-
-
-      {result && (
-        <div className="result-container">
-          {result.status === "success" ? (
-            <>
-              <p><strong>Filename:</strong> {result.filename}</p>
-              <p><strong>Prediction:</strong> {result.prediction}</p>
-              <p><strong>Real Accuracy:</strong> {result.real_accuracy}</p>
-              <p><strong>Fake Accuracy:</strong> {result.fake_accuracy}</p>
-            </>
+        <div className="video-box">
+          {videoUrl ? (
+            <video
+              ref={videoRef}
+              src={videoUrl}
+              controls
+              autoPlay
+              muted
+            />
           ) : (
-            <p>{result.message}</p>
+            "video will be played here"
           )}
         </div>
-      )}
 
-    
+        <div className="upload-box">
+          <p>upload video here</p>
+          <input type="file" accept="video/*" onChange={handleFileChange} />
+          <button className="upload-btn" onClick={handleUpload}>
+            {loading ? "Processing..." : "Upload & Predict"}
+          </button>
+        </div>
+
+      </div>
+
+      <div className="result-container">
+        {result && (
+          <div>
+            {result.status === "success" ? (
+              <>
+                <p><strong>Filename:</strong> {result.filename}</p>
+                <p><strong>Prediction:</strong> {result.prediction}</p>
+                <p><strong>Real Accuracy:</strong> {result.real_accuracy}</p>
+                <p><strong>Fake Accuracy:</strong> {result.fake_accuracy}</p>
+              </>
+            ) : (
+              <p>{result.message}</p>
+            )}
+          </div>
+        )}
+      </div>
+
+
 
     </div>
   );
