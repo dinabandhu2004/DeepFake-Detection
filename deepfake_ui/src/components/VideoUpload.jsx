@@ -41,6 +41,9 @@ const VideoUpload = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          maxBodyLength: Infinity,
+          maxContentLength: Infinity,
+          timeout: 0,
         }
       );
 
